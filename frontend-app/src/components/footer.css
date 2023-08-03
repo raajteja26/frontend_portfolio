@@ -1,0 +1,40 @@
+.container-fluid {
+  padding: 5px;
+}
+
+.row {
+  margin-bottom: 20px;
+}
+
+.col-md-6 {
+  margin-bottom: 20px;
+}
+
+.col-12 {
+  margin-bottom: 10px;
+}
+
+.socialimages {
+  width: 40px;
+  height: 40px;
+}
+
+@media (max-width: 768px) {
+  .col-md-6 {
+    text-align: center;
+  }
+
+  .col-md-6 .row {
+    justify-content: center;
+  }
+
+  .social {
+    text-align: center;
+  }
+  .socialimages {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+
+}
