@@ -26,6 +26,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Popover from 'react-bootstrap/Popover';
 import Swal from 'sweetalert2';
+import Nav_bar from "../components/navbar";
 
 function Main() {
   const [feedbacks, setFeedbacks] = React.useState([])
@@ -251,6 +252,8 @@ function Main() {
 
   return (
     <div>
+    <Nav_bar />
+    <br/>
       <div className='container pickupline'>
         <div className='row ' style={{ alignItems: "center" }}>
           <div className='col-md-7'>

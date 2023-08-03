@@ -16,6 +16,7 @@ import css from "../components/certimages/css.jpg"
 import python_entry from "../components/certimages/python_entry.jpg"
 import python from "../components/certimages/python.jpg"
 import docker from "../components/certimages/docker.jpg"
+import Nav_bar from "../components/navbar";
 
 function Projects() {
   const [modalShow, setModalShow] = React.useState(false);
@@ -82,17 +83,17 @@ function Projects() {
     { width: 1200, itemsToShow: 4 }, // Desktops
   ];
 
-  React.useEffect(() => {
-    axios.get('projects').then(
-      response => {
-        setProjects(response.data)
-      }
+  // React.useEffect(() => {
+  //   axios.get('projects').then(
+  //     response => {
+  //       setProjects(response.data)
+  //     }
 
-    ).catch(error => {
-      localStorage.removeItem('token');
-      console.log(error)
-    })
-  }, [setProjects])
+  //   ).catch(error => {
+  //     localStorage.removeItem('token');
+  //     console.log(error)
+  //   })
+  // }, [setProjects])
 
   function onClickMore(responsibility, name) {
     setModalShow(true)
@@ -136,19 +137,19 @@ function Projects() {
     );
   }
   
-  React.useEffect(() => {
-    fetchCertificates();
-  }, [setCertificates]); 
-    const fetchCertificates = async () => {
-      try {
-        const response = await axios.get('certificates');
-        setCertificates(response.data);
-        console.log(response.data);
-      } catch (error) {
-        localStorage.removeItem('token');
-        console.log(error);
-      }
-    };
+  // React.useEffect(() => {
+  //   fetchCertificates();
+  // }, [setCertificates]); 
+  //   const fetchCertificates = async () => {
+  //     try {
+  //       const response = await axios.get('certificates');
+  //       setCertificates(response.data);
+  //       console.log(response.data);
+  //     } catch (error) {
+  //       localStorage.removeItem('token');
+  //       console.log(error);
+  //     }
+  //   };
 
   function AddProjectModal(props) {
     const [formData, setFormData] = React.useState({
@@ -157,28 +158,28 @@ function Projects() {
       technologies: "",
       responsibilities: ""
     })
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      const form = event.currentTarget;
-      if (form.checkValidity() === false) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-      setAddShow(false)
-      axios.post('projects/addproject/', formData, {
-        headers: {
-          "Content-Type": "application/json",
-        }
-      }).then(
-        response => {
-          console.log(response)
-        }
-      ).catch(error => {
-        localStorage.removeItem('token');
-        console.log(error)
-      })
-      window.location.reload()
-    }
+    // const handleSubmit = (event) => {
+    //   event.preventDefault();
+    //   const form = event.currentTarget;
+    //   if (form.checkValidity() === false) {
+    //     event.preventDefault();
+    //     event.stopPropagation();
+    //   }
+    //   setAddShow(false)
+    //   axios.post('projects/addproject/', formData, {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     }
+    //   }).then(
+    //     response => {
+    //       console.log(response)
+    //     }
+    //   ).catch(error => {
+    //     localStorage.removeItem('token');
+    //     console.log(error)
+    //   })
+    //   window.location.reload()
+    // }
     const handleInputChange = (event) => {
       const { name, value } = event.target;
       setFormData({ ...formData, [name]: value });
@@ -199,7 +200,7 @@ function Projects() {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={handleSubmit}>
+          <Form>
             <Row className="mb-3">
               <Form.Group as={Col} md="6" controlId="validationCustom01">
                 <Form.Label>Project Name</Form.Label>
@@ -281,33 +282,33 @@ function Projects() {
       setFormData({ ...formData }); 
     }
 
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      const form = event.currentTarget;
-      if (form.checkValidity() === false) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-      const data = new FormData();
-      data.append("name", formData.name);
-      if (selectedFile) {
-        data.append("image", selectedFile);
-      }
-      setAddShow(false)
-      axios.post('certificates/addcertificates/', data, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        }
-      }).then(
-        response => {
-          console.log(response)
-          fetchCertificates();
-        }
-      ).catch(error => {
-        localStorage.removeItem('token');
-        console.log(error)
-      })
-    }
+    // const handleSubmit = (event) => {
+    //   event.preventDefault();
+    //   const form = event.currentTarget;
+    //   if (form.checkValidity() === false) {
+    //     event.preventDefault();
+    //     event.stopPropagation();
+    //   }
+    //   const data = new FormData();
+    //   data.append("name", formData.name);
+    //   if (selectedFile) {
+    //     data.append("image", selectedFile);
+    //   }
+    //   setAddShow(false)
+    //   axios.post('certificates/addcertificates/', data, {
+    //     headers: {
+    //       "Content-Type": "multipart/form-data",
+    //     }
+    //   }).then(
+    //     response => {
+    //       console.log(response)
+    //       fetchCertificates();
+    //     }
+    //   ).catch(error => {
+    //     localStorage.removeItem('token');
+    //     console.log(error)
+    //   })
+    // }
 
     const handleInputChange = (event) => {
       const { name, value } = event.target;
@@ -330,7 +331,7 @@ function Projects() {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={handleSubmit}>
+          <Form>
             <Row className="mb-3">
               <Form.Group as={Col} md="12" controlId="validationCustom01">
                 <Form.Label>Name</Form.Label>
@@ -374,8 +375,8 @@ function Projects() {
   }
   return (
     <div>
+    <Nav_bar/>
       <div className='container-fluid' style={{position:"relative"}}>
-        <br/>
         <h2 style={{ fontWeight: "600" }}>Projects</h2>
         <div style={{position:"absolute",top:"0px",right:"20px"}}>
           {localStorage.getItem('token') ? <img className='plusimage hover-effect' src={plus} alt="plus" style={{cursor: "pointer", width: "10%", height: "10%", float: "right", marginTop: "5%" }} onClick={() => setAddShow(true)} /> : ""}

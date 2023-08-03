@@ -44,7 +44,7 @@ function LoginPage({ name, ...props }) {
   };
   return (
     <>
-    <img style={{cursor:"pointer",marginRight:"-20px",marginTop:"-10px"}} onClick={handleShow} className='tejaimage' src={teja} alt="teja"/>
+    <img style={{cursor:"pointer",marginRight:"-20px",marginTop:"-10px"}} className='tejaimage' src={teja} alt="teja"/>
       <Offcanvas show={show} onHide={handleClose} {...props}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Please Login...</Offcanvas.Title>
